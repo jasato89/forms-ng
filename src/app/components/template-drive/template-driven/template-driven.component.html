@@ -1,0 +1,19 @@
+<form (submit)="onSubmit()" #form="ngForm">
+    <div>
+        <input type="email" placeholder="E-mail" name="email" required email [(ngModel)] ="user.email" #emailInput="ngModel">
+        <p *ngIf="emailInput.invalid && emailInput.touched">Por favor introduce un mail válido</p>
+    </div>
+    <div>
+        <input type="password" placeholder="Password" name="password" minlength="8" required [(ngModel)]="user.password" #passwordInput="ngModel">
+        <p *ngIf="passwordInput.invalid && passwordInput.touched">Por favor introduce una contraseña válida</p>
+    </div>
+    <div>
+        <select name="role" [(ngModel)]="user.role" required #roleInput="ngModel">
+            <option value="user">User</option>
+            <option value="operator">Operator</option>
+            <option value="admin">Admin</option>
+        </select>
+        <p *ngIf="roleInput.invalid && roleInput.touched">Por favor selecciona un rol</p>
+    </div>
+    <button [disabled]="form.invalid" type="submit">Enviar</button>
+</form>
