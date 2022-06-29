@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+    <input formControlName="name" type="name" placeholder="name" name="name">
+    <p *ngIf="nameController.invalid && nameController.touched">Name is mandatory</p>
+    <input formControlName="email" type="email" placeholder="E-mail" name="email">
+    <p *ngIf="emailController.invalid && emailController.touched">Email is mandatory</p>
+    <input formControlName="password" type="password" placeholder="Password" name="password">
+    <p *ngIf="passwordController.invalid && passwordController.touched">Password is mandatory</p>
+    <select formControlName="gender" name="gender">
+        <option [value]="gender" *ngFor="let gender of genders">{{gender}}</option>
+    </select>
+    <button [disabled]="registerForm.invalid" type="submit">Enviar formulario</button>
+</form>
